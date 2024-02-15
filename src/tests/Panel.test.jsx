@@ -3,6 +3,7 @@ import { expect, test } from "vitest";
 import { Panel } from "../components/Panel";
 import { Tarjetita } from "../components/Tarjetita";
 import { Botoncito } from "../components/Botoncito";
+import userEvent from "@testing-library/user-event";
 
 test("El panel no muestra mensaje al principio", () => {
     render(<Panel />);
@@ -33,6 +34,16 @@ test("Renderizar el poster de la película"), () => {
 
 // Test Botoncito
 
-test("al poner el cursor encima del X aparece el mensaje Eliminar"), () => {
+test("el boton muestra una X"), () => {
     render(<Botoncito />)
+
+    expect(screen.getByText(/X/)).toBeInTheDocument();
+}
+
+test("el boton muestra eliminar al poner el raton encima"), () => {
+    render(<Botoncito />)
+
+    userEvent.hover(screen.getByText)
+
+    expect(screen.getByText(/X/)).toBeInTheDocument();
 }
